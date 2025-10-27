@@ -348,7 +348,7 @@ class Real(Dimension):
         if self.dtype == float or self.dtype == 'float':
             # necessary, otherwise the type is converted to a numpy type
             inv_transform = getattr(inv_transform, "tolist", lambda: value)()
-            return [round(val, 6) for val in inv_transform]
+            return [round(val, 8) for val in inv_transform] # round(val, 6) causes problems in the random sample generation when #sample>1e6
         else:
             return inv_transform
 
